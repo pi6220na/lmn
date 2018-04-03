@@ -25,7 +25,7 @@ SECRET_KEY = '8c01$#j44g3znb)$q0()8)!%ts-jc)k12!a75-!63qb%bj=d4k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -77,12 +77,12 @@ WSGI_APPLICATION = 'lmnop_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'lmnop',
-        'USER' : 'lmnop',
-        'PASSWORD' : os.environ['LMNOP_DB_PW'],
-        'HOST' : 'localhost',
-        'PORT' : '5432',
+        # 'USER': 'lmnop',
+        # 'PASSWORD': os.environ['LMNOP_DB_PW'],
+        # 'HOST': 'localhost',
+        # 'PORT': '5432',
     }
 }
 
