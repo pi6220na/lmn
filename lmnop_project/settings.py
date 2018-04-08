@@ -26,7 +26,7 @@ SECRET_KEY = '8c01$#j44g3znb)$q0()8)!%ts-jc)k12!a75-!63qb%bj=d4k'
 DEBUG = True
 
 # This it the site we will host on https://morning-wildwood-81989.herokuapp.com/
-ALLOWED_HOSTS = [*]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
