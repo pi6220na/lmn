@@ -25,7 +25,7 @@ SECRET_KEY = '8c01$#j44g3znb)$q0()8)!%ts-jc)k12!a75-!63qb%bj=d4k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://morning-wildwood-81989.herokuapp.com/']
 
 
 # Application definition
@@ -78,10 +78,14 @@ WSGI_APPLICATION = 'lmnop_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'lmnop',
-        'USER' : 'lmnop',
-        'PASSWORD' : os.environ['LMNOP_DB_PW'],
-        'HOST' : 'localhost',
+        #'NAME': 'lmnop',
+        'NAME' : 'dcb0v6ggg2haqo',
+        #'USER' : 'lmnop',
+        'USER' : 'hadvfpliyruagl',
+        #'PASSWORD' : os.environ['LMNOP_DB_PW'],
+        'PASSWORD' : 'b625dc567c25b82081545fe3ba08543bd768a06b086b13e638200b80d4741546',
+        #'HOST' : 'localhost',
+        'HOST' : 'ec2-54-235-109-37.compute-1.amazonaws.com',
         'PORT' : '5432',
     }
 }
