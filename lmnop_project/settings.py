@@ -75,14 +75,16 @@ WSGI_APPLICATION = 'lmnop_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-DATABASES = {
+#Procfile + Requirements note -- To deploy globally gunicorn dependency updated and added
+
+DATABASES = { #Commented out code refers to local info, other code refers to Heroku deployment 
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         #'NAME': 'lmnop',
         'NAME' : 'dcb0v6ggg2haqo',
         #'USER' : 'lmnop',
         'USER' : 'hadvfpliyruagl',
-        #'PASSWORD' : os.environ['LMNOP_DB_PW'],
+        #'PASSWORD' : os.environ['LMNOP_DB_PW'], 
         'PASSWORD' : 'b625dc567c25b82081545fe3ba08543bd768a06b086b13e638200b80d4741546',
         #'HOST' : 'localhost',
         'HOST' : 'ec2-54-235-109-37.compute-1.amazonaws.com',
