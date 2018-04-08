@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Venue, Artist, Note, Show
 from .forms import VenueSearchForm, NewNoteForm, ArtistSearchForm, UserRegistrationForm
-
+import webbrowser
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -33,4 +33,4 @@ def artist_list(request):
 
 def artist_detail(request, artist_pk):
     artist = get_object_or_404(Artist, pk=artist_pk);
-    return render(request, 'lmn/artists/artist_detail.html' , {'artist' : artist, 'photo' : artist.photo})
+    return render(request, 'lmn/artists/artist_detail.html' , {'artist' : artist, 'photo' : artist.photo.url})
