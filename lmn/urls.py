@@ -1,6 +1,6 @@
 from django.conf.urls import url
+from django.conf.urls.static import static
 from . import views, views_artists, views_venues, views_notes, views_users
-
 from django.contrib.auth import views as auth_views
 
 

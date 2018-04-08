@@ -25,8 +25,14 @@ class Artist(models.Model):
     def __str__(self):
         return "Artist: " + self.name
 
+    # def __str__(self):
+    #     return 'Artist: %s\nPhoto %s' % (self.name, self.photo.url if self.photo else 'no photo')
+
+
 
 ''' A venue, that hosts shows. '''
+
+
 class Venue(models.Model):
     name = models.CharField(max_length=200, blank=False, unique=True)
     city = models.CharField(max_length=200, blank=False)
@@ -34,10 +40,12 @@ class Venue(models.Model):
     photo = models.ImageField(upload_to='images/', blank=True, null=True)
 
     def __str__(self):
-        return 'Venue name: {} in {}, {}'.format(self.name, self.city, self.state)
+        return 'Venue name: {} in {}, {}\n{}'.format(self.name, self.city, self.state, self.photo.url if self.photo else 'no photo')
 
 
 ''' A show - one artist playing at one venue at a particular date. '''
+
+
 class Show(models.Model):
     show_date = models.DateTimeField(blank=False)
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
