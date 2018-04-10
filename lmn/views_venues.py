@@ -31,7 +31,7 @@ def artists_at_venue(request, venue_pk):   # pk = venue_pk
     shows = Show.objects.filter(venue=venue_pk).order_by('show_date').reverse() # most recent first
     venue = Venue.objects.get(pk=venue_pk)
 
-    return render(request, 'lmn/artists/artist_list_for_venue.html', {'venue' : venue, 'shows' :shows, 'photo' :photo})
+    return render(request, 'lmn/artists/artist_list_for_venue.html', {'venue' : venue, 'shows' :shows})
 
 
 
