@@ -23,6 +23,9 @@
 
 {% endif %}
 
+{% if user.logout %}
+	<span id='logout_user_msg'>Goodbye <a href="{% url 'lmn:user_profile' user_pk=user.pk %}">{{ user.username }}</a>. <a href="{% url 'logout' %}">
+
 <hr>
 
 {% block content %}
