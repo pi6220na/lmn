@@ -7,14 +7,17 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
+from django.core.exceptions import PermissionDenied
 from django.utils import timezone
-
+from django.core.files.uploadedfile import SimpleUploadedFile
+from django.http import HttpResponse, Http404
 
 
 def user_profile(request, user_pk):
     user = User.objects.get(pk=user_pk)
     usernotes = Note.objects.filter(user=user.pk).order_by('posted_date').reverse()
-    return render(request, 'lmn/users/user_profile.html', {'user' : user , 'notes' : usernotes })
+    bio_info = user.userinfo.user_bio_info if user.userinfo else "YO"
+    return render(request, 'lmn/users/user_profile.html', {'user' : user , 'notes' : usernotes , 'bio_info' : bio_info})
 
 def user_profile_photo(request, user_pk):
     user = User.objects.get(pk=user_pk)
@@ -27,7 +30,44 @@ def user_profile_photo(request, user_pk):
 
 @login_required
 def my_user_profile(request):
-    # TODO - editable version for logged-in user to edit own profile
+        user = request.user
+        if request.method == 'POST':
+            form = UserEditForm(request.POST, request.FILES)
+            if form.is_valid():
+                user.username = form.cleaned_data["user_name"]
+                user.first_name = form.cleaned_data["user_first"]
+                user.last_name = form.cleaned_data["user_last"]
+                user.email = form.cleaned_data["user_email"]
+                user_bio_info=form.cleaned_data["user_about_me"]
+                user_photo = request.FILES["user_photo"]
+
+                if user.userinfo is None:
+                    user.userinfo = UserInfo()
+
+                user.userinfo.user_bio_info = user_bio_info
+                user.userinfo.user_photo_name = photo.name
+                user.userinfo.user_photo = photo.read()
+
+                user.save()
+                user.userinfo.save()
+            else:
+                raise RuntimeError(form.errors)
+
+        uinfo = user.userinfo
+        if uinfo:
+            about_me = uinfo.about_me
+            photo = uinfo.user_photo
+        else:
+            about_me = "The rain in Spain falls mainly in the plain."
+            photo = None
+
+        form = UserEditForm({"user_name": user.username,
+                             "user_first": user.first_name,
+                             "user_last": user.last_name,
+                             "user_email": user.email,
+                             "user_about_me": about_me,
+                             "user_photo": photo})
+
     return redirect('lmn:user_profile', user_pk=request.user.pk)
 
 

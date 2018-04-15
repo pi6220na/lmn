@@ -78,3 +78,14 @@ class UserRegistrationForm(UserCreationForm):
             user.save()
 
         return user
+
+class UserEditForm(forms.Form):
+    user_name = forms.CharField(label='User Name')
+    user_first = forms.CharField(label='User First Name')
+    user_last = forms.CharField(label='User Last Name')
+    user_email = forms.EmailField(label='User Email')
+    favorite_venue = forms.CharField(label='Favorite Venue')
+    favorite_artist = forms.CharField(label='Favorite Artist')
+    favorite_show = forms.CharField(label='Favorite Show')
+    user_bio_info = forms.CharField(label='Bio Information', widget=forms.Textarea, help_text='What was your most memorable experience with music?')
+    user_photo = forms.ImageField(label='User Photo', required=False)
