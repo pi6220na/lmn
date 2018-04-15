@@ -56,9 +56,9 @@ def edit_user_profile(request):
     uinfo = user.userinfo
     if uinfo:
         user_bio_info = uinfo.user_bio_info
-        photo = uinfo.user_photo
+        #photo = uinfo.user_photo
     else:
-        user_bio_info = "I dance to the music in my head"
+        user_bio_info = "I dance to the music in my head!"
         photo = None
 
     form = UserEditForm({"user_name": user.username,

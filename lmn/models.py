@@ -19,7 +19,13 @@ User._meta.get_field('first_name')._blank = False
 '''A User Profile'''
 
 class UserInfo(models.Model):
-    user = models.OneToOneField(User, on_delete==models.CASCADE,)
+    user = models.OneToOneField(User, on_delete=models.CASCADE,)
+    user_bio_info = models.TextField()
+    user_photo_file_name = models.CharField(null=True, max_length=255)
+    user_photo = models.BinaryField(null=True, blank=True)
+
+    def __str__(self):
+        return "Bio Information: My name is {} and {}.".format(self.user.first_name, self.user_bio_info)
 
 
 ''' A music artist '''
