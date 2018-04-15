@@ -38,7 +38,7 @@ def my_user_profile(request):
                 user.first_name = form.cleaned_data["user_first"]
                 user.last_name = form.cleaned_data["user_last"]
                 user.email = form.cleaned_data["user_email"]
-                user_bio_info=form.cleaned_data["user_about_me"]
+                user_bio_info=form.cleaned_data["user_bio_info"]
                 user_photo = request.FILES["user_photo"]
 
                 if user.userinfo is None:
@@ -55,17 +55,17 @@ def my_user_profile(request):
 
         uinfo = user.userinfo
         if uinfo:
-            about_me = uinfo.about_me
+            user_bio_info = uinfo.user_bio_info
             photo = uinfo.user_photo
         else:
-            about_me = "The rain in Spain falls mainly in the plain."
+            user_bio_info = "I dance to the music in my head"
             photo = None
 
         form = UserEditForm({"user_name": user.username,
                              "user_first": user.first_name,
                              "user_last": user.last_name,
                              "user_email": user.email,
-                             "user_about_me": about_me,
+                             "user_bio_info": user_bio_info,
                              "user_photo": photo})
 
     return redirect('lmn:user_profile', user_pk=request.user.pk)
