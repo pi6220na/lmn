@@ -9,6 +9,15 @@ Text truncated to 200 characters. -->
 
 <h2 id='username_notes'>{{ user.username }}'s notes</h2>
 
+{% if user.userinfo.user_photo %}
+    <img src="{% url 'lmn:user_profile_photo' user_pk=user.pk %}" />
+{% endif %}
+
+<h3> Favorites and Bio Info <h3>
+  <p class="favorite_venue">{{user.favorite_venue}}</p>
+  <p class="favorite_artist">{{user.favorite_artist}}</p>
+  <p class="bio_info">{{user.bio_info}}</p>
+
 {% for note in notes %}
 
 <div class='note' id="note_{{ note.pk }}">
@@ -16,6 +25,7 @@ Text truncated to 200 characters. -->
   <P class="note_info">{{ note.show.artist.name }} at {{ note.show.venue.name }} on {{ note.show.show_date }}</P>
   <p class="note_text">{{ note.text|truncatechars:300}}</p>
   <p class="note_posted_at">{{ note.posted_date}}</p>
+
 </div>
 
 {% empty %}

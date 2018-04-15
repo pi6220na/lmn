@@ -16,7 +16,14 @@ def user_profile(request, user_pk):
     usernotes = Note.objects.filter(user=user.pk).order_by('posted_date').reverse()
     return render(request, 'lmn/users/user_profile.html', {'user' : user , 'notes' : usernotes })
 
+def user_profile_photo(request, user_pk):
+    user = User.objects.get(pk=user_pk)
+    userinfo = user.userinfo
+    if userinfo is None:
+        return Http404("No such photo.")
 
+    user_photo= userinfo.user_photo
+    return HttpResponse(user_photo)
 
 @login_required
 def my_user_profile(request):
@@ -44,3 +51,8 @@ def register(request):
     else:
         form = UserRegistrationForm()
         return render(request, 'registration/register.html', { 'form' : form } )
+
+def logout_view(request):
+    response = logout(request)
+    message = 'You have been logged out\n Goodbye!'
+    return render(request, 'registration/logout.html', {'message':message})
