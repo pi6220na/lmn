@@ -16,6 +16,11 @@ User._meta.get_field('email')._blank = False
 User._meta.get_field('last_name')._blank = False
 User._meta.get_field('first_name')._blank = False
 
+'''A User Profile'''
+
+class UserInfo(models.Model):
+    user = models.OneToOneField(User, on_delete==models.CASCADE,)
+
 
 ''' A music artist '''
 class Artist(models.Model):
