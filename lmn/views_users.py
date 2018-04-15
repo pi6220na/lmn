@@ -65,8 +65,8 @@ def edit_user_profile(request):
                          "user_first": user.first_name,
                          "user_last": user.last_name,
                          "user_email": user.email,
-                         "user_bio_info": user_bio_info,
-                         "user_photo": photo})
+                         "user_bio_info": user.user_bio_info,
+                         "user_photo": user.photo})
 
     return redirect('lmn:user_profile', user_pk=request.user.pk)
 
