@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from .models import Venue, Artist, Note, Show
-from .forms import VenueSearchForm, NewNoteForm, ArtistSearchForm, UserRegistrationForm
+from .forms import VenueSearchForm, NewNoteForm, ArtistSearchForm, UserRegistrationForm, UserEditForm
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -30,43 +30,43 @@ def user_profile_photo(request, user_pk):
 
 @login_required
 def edit_user_profile(request):
-        user = request.user
-        if request.method == 'POST':
-            form = UserEditForm(request.POST, request.FILES)
-            if form.is_valid():
-                user.username = form.cleaned_data["user_name"]
-                user.first_name = form.cleaned_data["user_first"]
-                user.last_name = form.cleaned_data["user_last"]
-                user.email = form.cleaned_data["user_email"]
-                user_bio_info=form.cleaned_data["user_bio_info"]
-                user_photo = request.FILES["user_photo"]
+    user = request.user
+    if request.method == 'POST':
+        form = UserEditForm(request.POST, request.FILES)
+        if form.is_valid():
+            user.username = form.cleaned_data["user_name"]
+            user.first_name = form.cleaned_data["user_first"]
+            user.last_name = form.cleaned_data["user_last"]
+            user.email = form.cleaned_data["user_email"]
+            user_bio_info=form.cleaned_data["user_bio_info"]
+            user_photo = request.FILES["user_photo"]
 
-                if user.userinfo is None:
-                    user.userinfo = UserInfo()
+            if user.userinfo is None:
+                user.userinfo = UserInfo()
 
-                user.userinfo.user_bio_info = user_bio_info
-                user.userinfo.user_photo_name = photo.name
-                user.userinfo.user_photo = photo.read()
+            user.userinfo.user_bio_info = user_bio_info
+            #user.userinfo.user_photo_name = photo.name
+            #user.userinfo.user_photo = photo.read()
 
-                user.save()
-                user.userinfo.save()
-            else:
-                raise RuntimeError(form.errors)
-
-        uinfo = user.userinfo
-        if uinfo:
-            user_bio_info = uinfo.user_bio_info
-            photo = uinfo.user_photo
+            user.save()
+            user.userinfo.save()
         else:
-            user_bio_info = "I dance to the music in my head"
-            photo = None
+            raise RuntimeError(form.errors)
 
-        form = UserEditForm({"user_name": user.username,
-                             "user_first": user.first_name,
-                             "user_last": user.last_name,
-                             "user_email": user.email,
-                             "user_bio_info": user_bio_info,
-                             "user_photo": photo})
+    uinfo = user.userinfo
+    if uinfo:
+        user_bio_info = uinfo.user_bio_info
+        photo = uinfo.user_photo
+    else:
+        user_bio_info = "I dance to the music in my head"
+        photo = None
+
+    form = UserEditForm({"user_name": user.username,
+                         "user_first": user.first_name,
+                         "user_last": user.last_name,
+                         "user_email": user.email,
+                         "user_bio_info": user_bio_info,
+                         "user_photo": photo})
 
     return redirect('lmn:user_profile', user_pk=request.user.pk)
 
