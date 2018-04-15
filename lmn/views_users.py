@@ -29,7 +29,7 @@ def user_profile_photo(request, user_pk):
     return HttpResponse(user_photo)
 
 @login_required
-def my_user_profile(request):
+def edit_user_profile(request):
         user = request.user
         if request.method == 'POST':
             form = UserEditForm(request.POST, request.FILES)
