@@ -13,11 +13,14 @@ Text truncated to 200 characters. -->
     <img src="{% url 'lmn:user_profile_photo' user_pk=user.pk %}" />
 {% endif %}
 
+{% if user.userinfo.favorite_show or user.userinfo.favorite_venue or user.userinfo.favorite_artist or user.user_bio_info %}
 <h3> Favorites and Bio Info <h3>
   <p class="favorite_venue">{{user.favorite_venue}}</p>
   <p class="favorite_artist">{{user.favorite_artist}}</p>
   <p class="favorite_show">{{user.favorite_show}}</p>
   <p class="bio_info">{{user.bio_info}}</p>
+
+{% endif %}
 
 {% for note in notes %}
 
@@ -35,5 +38,6 @@ Text truncated to 200 characters. -->
 
 {% endfor %}
 
+<P><a href="{% url 'lmn:edit_user_profile' %}">Edit Account</a></p>
 
 {% endblock %}
