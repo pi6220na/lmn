@@ -77,14 +77,15 @@ WSGI_APPLICATION = 'lmnop_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'lmnop',
-        #'NAME': 'da2au2im9mkuqo',
-        'USER' : 'lmnop',
-        #'USER' : 'zswnderfxsolna',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        #'ENGINE': 'django.db.backends.postgresql',
+        #'NAME': 'lmnop',
+        'NAME': 'da2au2im9mkuqo',
+        #'USER' : 'lmnop',
+        'USER' : 'zswnderfxsolna',
         'PASSWORD' : os.environ['LMNOP_DB_PW'],
-        'HOST' : 'localhost',
-        #'HOST' : 'ec2-174-129-41-64.compute-1.amazonaws.com',
+        #'HOST' : 'localhost',
+        'HOST' : 'ec2-174-129-41-64.compute-1.amazonaws.com',
         'PORT' : '5432',
     }
 }
