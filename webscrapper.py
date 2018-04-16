@@ -12,7 +12,7 @@ from random import randint
 import psycopg2  # psycopg2 docs link: http://initd.org/psycopg/docs/usage.html
 import os
 
-from lmnop.settings import DATABASES
+from lmnop_project.settings import DATABASES
 
 # DB connection setup
 # HOST = os.environ['DB_URL']
