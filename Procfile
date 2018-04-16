@@ -1,1 +1,1 @@
-web: gunicorn lmn.wsgi
+web: gunicorn lmnop_project.wsgi
