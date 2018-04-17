@@ -7,6 +7,7 @@ from django.contrib.auth import views as auth_views
 
 app_name = 'lmn'
 
+# this direct the website to the different parts
 urlpatterns = [
 
     url(r'^$', views.homepage, name='homepage'),
