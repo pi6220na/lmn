@@ -1,5 +1,5 @@
 from django import forms
-from .models import Note
+from .models import Note,Artist,Venue
 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -13,6 +13,11 @@ class VenueSearchForm(forms.Form):
 class ArtistSearchForm(forms.Form):
     search_name = forms.CharField(label='Artist Name', max_length=200)
 
+
+class ArtistDetailForm(forms.ModelForm):
+    class Meta:
+        model = Artist
+        fields = ('photo',)
 
 class NewNoteForm(forms.ModelForm):
     class Meta:

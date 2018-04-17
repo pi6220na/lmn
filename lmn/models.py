@@ -56,6 +56,8 @@ class Show(models.Model):
 
 
 ''' One user's opinion of one show. '''
+
+
 class Note(models.Model):
     show = models.ForeignKey(Show, blank=False, on_delete=models.CASCADE)
     user = models.ForeignKey('auth.User', blank=False, on_delete=models.CASCADE)
