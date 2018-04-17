@@ -80,12 +80,12 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         #'ENGINE': 'django.db.backends.postgresql',
         #'NAME': 'lmnop',
-        'NAME': 'da2au2im9mkuqo',
+        'NAME': 'd1kjl8l2mh4mm6',
         #'USER' : 'lmnop',
-        'USER' : 'zswnderfxsolna',
+        'USER' : 'rngcvcigyjjhqj',
         'PASSWORD' : os.environ['LMNOP_DB_PW'],
         #'HOST' : 'localhost',
-        'HOST' : 'ec2-174-129-41-64.compute-1.amazonaws.com',
+        'HOST' : 'ec2-23-23-142-5.compute-1.amazonaws.com',
         'PORT' : '5432',
     }
 }
