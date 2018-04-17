@@ -19,6 +19,11 @@ class NewNoteForm(forms.ModelForm):
         model = Note
         fields = ('title', 'text')
 
+class editNoteForm(forms.ModelForm):
+    class Meta:
+        model = Note
+        fields =('title', 'text')
+
 
 class UserRegistrationForm(UserCreationForm):
 
