@@ -1,0 +1,17 @@
+{% extends 'lmn/base.html' %}
+{% block content %}
+
+<h2>Edit note</h2>
+
+<form method="POST" action="{% url 'lmn:edit_note' note_pk=note.pk %}">{% csrf_token %}
+  {{ form.as_p }}
+  <P>
+  <input type='submit' value='Edit'>
+</form>
+
+<form action="{% url 'lmn:delete_note' note_pk=note.pk %}" method="post">{% csrf_token %}
+    <p>Delete note for "{{  note.show.artist.name }}"</p>
+    <input type="submit" value="Delete" />
+</form>
+
+{% endblock %}
