@@ -1,15 +1,24 @@
+<!-- extends the base html page  -->
 {% extends 'lmn/base.html' %}
+
+<!-- this is the content to be put in the block section of the base html -->
 {% block content %}
 
+<!-- header for the artist list of venues -->
 <h2 id="venues_for_artist_title">Venues that {{ artist.name }} has played at</h2>
 
+<!-- loop to print out the shows for the user -->
 {% for show in shows %}
 
+<!-- getting the show information -->
 <div class="show" id="show_{{ show.pk }}">
+  <!-- displaying the venue name and date for show -->
   <P>{{ show.venue.name}} on {{ show.show_date }}</p>
+    <!-- link to view notes -->
   <P><a href="{% url 'lmn:notes_for_show' show_pk=show.pk %}">See notes for this show and add your own</a></p>
 </div>
 
+<!-- if the artist has no show -->
 {% empty %}
   <P id="no_results">We have no records of venues this artist has played at<p>
 {% endfor %}

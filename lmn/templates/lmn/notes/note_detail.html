@@ -1,10 +1,14 @@
+<!-- extenting the base html page -->
 {% extends 'lmn/base.html' %}
+
+<!-- this is added to the base html block section -->
 {% block content %}
 
-
+<!-- this is the header for the notes -->
 <h2 id="note_page_title">{{ note.show.artist.name }} at {{ note.show.venue.name }} by <a href="{% url 'lmn:user_profile' user_pk=note.user.pk %}">{{ user.username }}</a></h2>
-
+<!-- this prints out the title of this note -->
 <p id="note_title"><b>{{ note.title}}</b></p>
+<!-- this prints out the notes text -->
 <p id="note_text">{{ note.text }}</b>
 
 {% endblock %}

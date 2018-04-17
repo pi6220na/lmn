@@ -1,20 +1,29 @@
+<!-- this pulls the html from the base html page -->
 {% extends 'lmn/base.html' %}
 
+<!-- This is the stuff entered into the block area of the <base href=" page" target="_blank"> -->
 {% block content %}
 
-
+<!-- this is the the venue title and pulls the name from else where -->
 <h2 id="artists_at_venue_title">Artists that have played at {{ venue.name }}</h2>
 
+<!-- This is a loop to get the shows at the venue -->
 {% for show in shows %}
 
+<!-- this is to put events in the correct ourput during the loop -->
 <div class="show" id="show_{{ show.pk }}">
+
+  <!-- pulls the artist name and showdate -->
   <P>{{ show.artist.name}} on {{ show.show_date }}.
+    <!-- this is a link to the notes about this show -->
     <a href="{% url 'lmn:notes_for_show' show_pk=show.pk %}">See notes for this show, and add your own</a>
   </P>
 </div>
 
+<!-- This is when there is nothing returned in the shows list for the venue -->
 {% empty %}
 
+<!-- is printed if no shows -->
   <P id="no_results">We have no records of shows at this venue</p>
 
 {% endfor %}

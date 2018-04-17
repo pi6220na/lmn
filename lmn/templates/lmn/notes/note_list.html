@@ -1,16 +1,20 @@
+<!-- this is extending the base html page -->
 {% extends 'lmn/base.html' %}
+<!-- this is adding to the block section of the base page -->
 {% block content %}
 
-
+<!-- if statement for a particular shows note -->
 {% if show %}
   <h2 id="show_title">Notes for {{ show.artist.name }} at {{ show.venue.name }} on {{ show.show_date }}</h2>
+<!-- else statement if user clicks the notes button, shows Latest notes -->
 {% else %}
   <h2>Latest Notes</h2>
 {% endif %}
 
-
+<!-- for loop to get notes  -->
 {% for note in notes %}
 
+<!-- each note in the loop will get these -->
 <div id="note_{{ note.pk }}">
   <h3 class="note_title">{{ note.title }}</h3>
   <p class="show_info"><a href="{% url 'lmn:notes_for_show' show_pk=note.show.pk %}">{{ note.show.artist.name }} at {{ note.show.venue.name }} on {{ note.show.show_date }}</a></p>
@@ -18,6 +22,7 @@
   <p class='note_text'>{{ note.text|truncatechars:100 }}</p>
   <hr>
 
+<!-- if the list for notes is empty -->
 {% empty %}
 
 <p>No notes.</p>
@@ -29,6 +34,7 @@ display button to add new note for that show. -->
 
 {% if show %}
 
+<!-- form action to send to add note for venue -->
 <form action="{% url 'lmn:new_note' show_pk=show.pk %}">
   <input id="add_note" type='submit' value='Add your own notes'>
 </form>

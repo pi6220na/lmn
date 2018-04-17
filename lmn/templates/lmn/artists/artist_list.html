@@ -1,29 +1,41 @@
+<!-- extends the base html page -->
 {% extends 'lmn/base.html' %}
+
+<!-- This is added to the block area of the base page -->
 {% block content %}
 
+<!-- Head for artist list -->
 <h2>Artist List</h2>
 
+<!-- to search for artist -->
 <P>Artist Search</p>
+  <!-- a form action that looks for artist from the artist list -->
   <form action="{% url 'lmn:artist_list' %}">
     {{ form }}
+    <!-- the submit button for the search -->
     <input type='submit' value='Search'>
   </form>
 
-
+<!-- this prints out for the user so they know what they typed in -->
 {% if search_term %}
   <h2 id='artist_list_title'>Artists matching '{{ search_term }}' <a href="{% url 'lmn:artist_list' %}" id='clear_search'>(clear)</a></h2>
+<!-- this is put in if you enter the page not by searching -->
 {% else %}
   <h2 id='artist_list_title'>All artists</h2>
 {% endif %}
 
-
+<!-- a loop for each artist -->
 {% for artist in artists %}
 
+<!-- puts the artist name as the id -->
 <div class="artist" id="artist_{{ artist.pk }}">
+  <!-- a hyper link to the artist page -->
 <P><a href="{% url 'lmn:artist_detail' artist_pk=artist.pk %}">{{ artist.name }}</a></p>
+  <!-- a link to the notes page for the airtist -->
   <p>See venues played, notes, and add your own <a href="{% url 'lmn:venues_for_artist' artist_pk=artist.pk %}">{{ artist.name }} notes</a>
 <div>
 
+<!-- This is what happens if the search doesn't come up with anything -->
 {% empty %}
 <P>No artists found</P>
 {% endfor %}

@@ -1,13 +1,22 @@
+<!-- this takes the orginal page and adds this contain -->
 {% extends 'lmn/base.html' %}
 
+<!-- This is the block contain that put into the page  -->
 {% block content %}
 
+<!-- this is the the head that has a id -->
 <h2 id='artist_detail_title'>Artist Detail</h2>
+<!-- This pull the artist name and inserts it into the page -->
 <p id='artist_name'>{{ artist.name }}</p>
+<!-- header for photo area -->
 <h3>Photo</h3>
+<!-- if statement if the artist has a photo -->
 {% if artist.photo %}
+<!-- pulling the artist photo from the class -->
   <img src="{{ artist.photo.url }}">
+  <!-- else statement if there is no photo -->
 {% else %}
   <P>No photo uploaded</p>
+    <!-- end of the if else statement -->
 {% endif %}
 {% endblock %}

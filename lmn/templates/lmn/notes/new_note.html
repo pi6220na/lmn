@@ -1,11 +1,16 @@
+<!-- extends the base html page -->
 {% extends 'lmn/base.html' %}
+<!-- This is added to the block area of the base page -->
 {% block content %}
 
+<!-- head for the new note, pulls the name from what show is sent to the page -->
 <h2>New note for {{ show.artist.name }} at {{ show.venue.name }} on {{ show.show_date}}</h2>
 
+<!-- post method to add the new note to the show notes -->
 <form method="POST" action="{% url 'lmn:new_note' show_pk=show.pk %}">{% csrf_token %}
   {{ form.as_p }}
   <P>
+    <!-- button to add the note -->
   <input type='submit' value='Add Note'>
 </form>
 
