@@ -20,7 +20,7 @@ User._meta.get_field('first_name')._blank = False
 
 ''' A music artist '''
 class Artist(models.Model):
-    name = models.CharField(max_length=200, blank=False);
+    name = models.CharField(max_length=200, blank=False)
     photo = models.ImageField(upload_to='images/', blank=True, null=True)
 
     def __str__(self):
@@ -70,5 +70,3 @@ class Note(models.Model):
 
     def __str__(self):
         return 'Note for user ID {} for show ID {} with title {} text {} posted on {}'.format(self.user, self.show, self.title, self.text, self.posted_date)
-
-
