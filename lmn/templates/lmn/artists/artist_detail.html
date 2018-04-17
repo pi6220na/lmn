@@ -1,5 +1,5 @@
 {% extends 'lmn/base.html' %}
-
+{% load staticfiles %}
 {% block content %}
 
 <h2 id='artist_detail_title'>Artist Detail</h2>
@@ -10,4 +10,7 @@
 {% else %}
   <P>No photo uploaded</p>
 {% endif %}
+{% csrf_token %}
+<p><label for="id_photo">Photo:</label> <input type="file" name="photo" id="id_photo" /></p>
+<button type="submit">Save review</button>
 {% endblock %}
