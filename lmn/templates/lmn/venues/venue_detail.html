@@ -10,4 +10,11 @@
 <P><span id="venue_city">{{ venue.city }}</span>,
   <span id="venue_state">{{ venue.state }}</span></p>
 
+<h3>Photo</h3>
+{% if venue.photo %}
+  <img src="{{ venue.photo.url }}">
+{% else %}
+  <P>No photo uploaded</p>
+{% endif %}
+
 {% endblock %}

@@ -25,7 +25,7 @@ SECRET_KEY = '8c01$#j44g3znb)$q0()8)!%ts-jc)k12!a75-!63qb%bj=d4k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -77,12 +77,12 @@ WSGI_APPLICATION = 'lmnop_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'lmnop',
-        'USER' : 'lmnop',
-        'PASSWORD' : os.environ['LMNOP_DB_PW'],
-        'HOST' : 'localhost',
-        'PORT' : '5432',
+        # 'USER': 'lmnop',
+        # 'PASSWORD': os.environ['LMNOP_DB_PW'],
+        # 'HOST': 'localhost',
+        # 'PORT': '5432',
     }
 }
 
@@ -130,3 +130,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # Should provide the user object.
 LOGIN_REDIRECT_URL = 'lmn:my_user_profile'
 LOGOUT_REDIRECT_URL = 'lmn:homepage'
+
+# Media URL, for user-created media - becomes part of URL when images are displayed
+MEDIA_URL = '/lmn/media/'
+
+# Where in the file system to save user-uploaded files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

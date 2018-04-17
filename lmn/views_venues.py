@@ -37,4 +37,4 @@ def artists_at_venue(request, venue_pk):   # pk = venue_pk
 
 def venue_detail(request, venue_pk):
     venue = get_object_or_404(Venue, pk=venue_pk);
-    return render(request, 'lmn/venues/venue_detail.html' , {'venue' : venue})
+    return render(request, 'lmn/venues/venue_detail.html', {'venue' : venue})
