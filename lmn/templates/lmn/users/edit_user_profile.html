@@ -15,7 +15,7 @@
 {% endif %}
 
 <form method='post' enctype="multipart/form-data" action="">{% csrf_token %}
-  <table id="my_profile_form">
+  <table id="edit_profile_form">
     {{ form.as_table}}
   </table>
   <button type='submit'>Apply Changes</button>

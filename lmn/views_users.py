@@ -21,7 +21,7 @@ def user_profile(request, user_pk):
     else:
         user_bio_info = 'Still a work in progress.'
     usernotes = Note.objects.filter(user=user.pk).order_by('posted_date').reverse()
-    return render(request, 'lmn/users/user_profile.html', {'user' : user , 'bio_info' : bio_info, 'notes' : usernotes ,})
+    return render(request, 'lmn/users/user_profile.html', {'user' : user , 'bio_info' : user_bio_info, 'notes' : usernotes })
 
 def user_profile_photo(request, user_pk):
     user = User.objects.get(pk=user_pk)
@@ -35,6 +35,8 @@ def user_profile_photo(request, user_pk):
 @login_required
 def edit_user_profile(request):
     user = request.user
+    userInfo = UserInfo.objects.get(user = user)
+    usernotes = Note.objects.filter(user=user.pk).order_by('posted_date').reverse()
     if request.method == 'POST':
         form = UserEditForm(request.POST, request.FILES)
         if form.is_valid():
@@ -53,22 +55,22 @@ def edit_user_profile(request):
             user.save()
             user.userinfo.save()
 
-    if hasattr(user, 'userinfo') and user.userinfo is not None:
-        user_bio_info = user.userinfo.user_bio_info
-        photo = user.userinfo.user_photo
+        if hasattr(user, 'userinfo') and user.userinfo is not None:
+            user_bio_info = user.userinfo.user_bio_info
+            photo = user.userinfo.user_photo
+        else:
+            user.userinfo = UserInfo()
+            user_bio_info = "Dancing to the music in my head"
+            user.save()
+            user.userinfo.save()
+
     else:
-        user.userinfo = UserInfo()
-        user_bio_info = "Dancing to the music in my head"
-        user.save()
-        user.userinfo.save()
-
-
-    form = UserEditForm({"user_name": user.username,
-                         "user_first": user.first_name,
-                         "user_last": user.last_name,
-                         "user_email": user.email,
-                         "user_bio_info": user.user_bio_info,
-                         "user_photo": user.photo})
+        form = UserEditForm({"user_name": user.username,
+                             "user_first": user.first_name,
+                             "user_last": user.last_name,
+                             "user_email": user.email,
+                             "user_bio_info": user.user_bio_info,
+                             "user_photo": user.photo})
 
     return render(request, 'lmn/users/edit_user_profile.html', {'form': form, 'user' : user})
 
