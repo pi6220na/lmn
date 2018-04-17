@@ -10,7 +10,12 @@
 {% else %}
   <P>No photo uploaded</p>
 {% endif %}
-{% csrf_token %}
-<p><label for="id_photo">Photo:</label> <input type="file" name="photo" id="id_photo" /></p>
-<button type="submit">Save review</button>
+<form action="{% url 'artist_detail' artist_pk=artist.pk %}" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ review_form.as_p }}
+<button type="submit">Save</button>
+</form>
+
+<!--<p><label for="id_photo">Photo:</label> <input type="file" name="photo" id="id_photo" /></p>-->
+<!--<button type="submit"value="Save" class="default" name="_save">Save</button>-->
 {% endblock %}
