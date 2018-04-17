@@ -48,6 +48,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     # Simplified static file serving.
+    # https://warehouse.python.org/project/whitenoise/
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 
@@ -81,7 +84,7 @@ DATABASES = {
         #'ENGINE': 'django.db.backends.postgresql',
         #'NAME': 'lmnop',
         'NAME': 'da2au2im9mkuqo',
-        #'USER' : 'lmnop',
+        #'USER' : 'justin',
         'USER' : 'zswnderfxsolna',
         'PASSWORD' : os.environ['LMNOP_DB_PW'],
         #'HOST' : 'localhost',
@@ -140,3 +143,7 @@ MEDIA_URL = '/lmn/media/'
 
 # Where in the file system to save user-uploaded files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
