@@ -1,16 +1,21 @@
+<!-- this extends the base html page -->
 {% extends 'lmn/base.html' %}
 
+<!-- this is added to the block content part of the base html page -->
 {% block content %}
 
+<!-- header for the login page -->
   <h2>Log in</h2>
 
+<!-- form post action to login -->
   <form method='POST' action="">{% csrf_token %}
   <table id='login_form'>
     {{ form.as_table }}
   </table>
     <button type="submit">Login</button>
   </form>
-
+  
+<!-- link to the registration page -->
 <P><a href="{% url 'register' %}">Or create an account</a></p>
 
 {% endblock %}

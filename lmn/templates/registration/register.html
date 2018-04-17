@@ -1,13 +1,18 @@
+<!-- extends the base html page -->
 {% extends 'lmn/base.html' %}
 
+<!-- put this content into the block section of the base html page -->
 {% block content %}
 
+<!-- header for the register -->
 <H2>Register</H2>
 
+<!-- if statement if there is a message -->
 {% if message %}
   <P>{{ message }}</p>
 {% endif %}
 
+<!-- get information from class UserRegistrationForm in the form.py -->
 <form method='post' action="">{% csrf_token %}
   <table id="registration_form">
     {{ form.as_table}}

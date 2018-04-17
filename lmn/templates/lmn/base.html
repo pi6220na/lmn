@@ -1,30 +1,41 @@
+<!-- loads in the css file and others from the static file area  -->
 {% load staticfiles %}
+<!-- tell the page that it is html -->
 <html>
+<!-- the head is what is put in to the tab -->
 <head>
+  <!-- The title for the page -->
   <title>LMNOP</title>
+  <!-- This is using the style sheet -->
   <link rel="stylesheet" href='{% static 'css/base_style.css' %}'></link>
 </head>
 
 <body>
 
+<!-- header for the page -->
 <h1>LMN</h1>
 
-
+<!-- links for the different parts fo the site -->
 <a href="{% url 'lmn:venue_list' %}">Venues</a>
 <a href="{% url 'lmn:artist_list' %}">Artists</a>
 <a href="{% url 'lmn:latest_notes' %}">Notes</a>
 
+<!-- this checked if the user is logged in -->
 {% if user.is_authenticated %}
   <span id='welcome_user_msg'>You are logged in, <a href="{% url 'lmn:user_profile' user_pk=user.pk %}">{{ user.username }}</a>.  <a href="{% url 'logout' %}">Logout</a></span>
 
+<!-- this is what happens when the user isn''t logged in -->
 {% else %}
 
+  <!-- link to the login or sign page -->
   <span id='login_or_sign_up'><a href="{% url 'login' %}?next={{ request.path }}">Login or sign up</a></span>
 
 {% endif %}
 
+<!-- this is a head row -->
 <hr>
 
+<!-- this is where the block contain of the extended pages go -->
 {% block content %}
 {% endblock %}
 

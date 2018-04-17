@@ -32,9 +32,12 @@
 <!-- loop to print out the venues -->
 {% for venue in venues %}
 
+<!-- setting the id to current venue -->
 <div id="venue_{{ venue.pk }}">
+  <!-- link to the venue -->
   <P><a href="{% url 'lmn:venue_detail' venue_pk=venue.pk %}">{{ venue.name }}</a>
   {{ venue.city }}, {{ venue.state }}</p>
+  <!-- link to the artists and notes -->
   <P>See artists, notes, and add your own <a href='{% url "lmn:artists_at_venue" venue_pk=venue.pk %}'>{{ venue.name }} notes</a>
 </p>
 </div>
