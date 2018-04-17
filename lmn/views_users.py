@@ -12,17 +12,16 @@ from django.utils import timezone
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.http import HttpResponse, Http404
 from PIL import Image
-import io
 
 
 def user_profile(request, user_pk):
     user = User.objects.get(pk=user_pk)
-    usernotes = Note.objects.filter(user=user.pk).order_by('posted_date').reverse()
     if hasattr(user, 'userinfo') and hasattr(user.userinfo, 'user_bio_info'):
         user_bio_info = user.userinfo.user_bio_info
     else:
         user_bio_info = 'Still a work in progress.'
-    return render(request, 'lmn/users/user_profile.html', {'user' : user , 'notes' : usernotes , 'bio_info' : bio_info})
+    usernotes = Note.objects.filter(user=user.pk).order_by('posted_date').reverse()
+    return render(request, 'lmn/users/user_profile.html', {'user' : user , 'bio_info' : bio_info, 'notes' : usernotes ,})
 
 def user_profile_photo(request, user_pk):
     user = User.objects.get(pk=user_pk)
@@ -54,20 +53,15 @@ def edit_user_profile(request):
             user.save()
             user.userinfo.save()
 
-        if hasattr(user, 'userinfo') and user.userinfo is not None:
-            user_bio_info = user.userinfo.user_bio_info
-            photo = user.userinfo.user_photo
-        else:
-            user.userinfo = UserInfo()
-            about_me = "Dancing to the music in my head"
-            user.save()
-            user.userinfo.save()
-
+    if hasattr(user, 'userinfo') and user.userinfo is not None:
+        user_bio_info = user.userinfo.user_bio_info
+        photo = user.userinfo.user_photo
+    else:
+        user.userinfo = UserInfo()
+        user_bio_info = "Dancing to the music in my head"
         user.save()
         user.userinfo.save()
 
-    else:
-        raise RuntimeError(form.errors)
 
     form = UserEditForm({"user_name": user.username,
                          "user_first": user.first_name,
@@ -76,7 +70,7 @@ def edit_user_profile(request):
                          "user_bio_info": user.user_bio_info,
                          "user_photo": user.photo})
 
-    return render(request, 'lmn/users/edit_user_profile.html', {'form': form, 'user': user})
+    return render(request, 'lmn/users/edit_user_profile.html', {'form': form, 'user' : user})
 
 
 

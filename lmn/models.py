@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 import datetime
-from PIL import Image
 
 # Every model gets a primary key field by default.
 
@@ -26,6 +25,8 @@ class UserInfo(models.Model):
     user_bio_info = models.TextField(blank=True, max_length=1000)
     user_photo_file_name = models.CharField(null=True, max_length=255)
     user_photo = models.BinaryField(null=True, blank=True)
+    user_favorite_artist = models.CharField(max_length=200, blank=True)
+    user_favorite_venue = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
         return "Bio Information: My name is {} and {}.".format(self.user.first_name, self.user_bio_info)

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Note
+from .models import Note, UserInfo
 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -80,6 +80,7 @@ class UserRegistrationForm(UserCreationForm):
         return user
 
 class UserEditForm(forms.Form):
+
     user_name = forms.CharField(label='User Name')
     user_first = forms.CharField(label='User First Name')
     user_last = forms.CharField(label='User Last Name')
