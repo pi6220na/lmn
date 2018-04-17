@@ -18,6 +18,7 @@
   <p class='note_text'>{{ note.text|truncatechars:100 }}</p>
   <hr>
 
+
 {% empty %}
 
 <p>No notes.</p>
@@ -27,11 +28,13 @@
 <!-- If this is a list of notes for one show,
 display button to add new note for that show. -->
 
+
 {% if show %}
 
 <form action="{% url 'lmn:new_note' show_pk=show.pk %}">
   <input id="add_note" type='submit' value='Add your own notes'>
 </form>
+
 
 {% endif %}
 

@@ -1,6 +1,7 @@
 from django import forms
 from .models import Note
 
+
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import ValidationError
@@ -15,6 +16,17 @@ class ArtistSearchForm(forms.Form):
 
 
 class NewNoteForm(forms.ModelForm):
+    class Meta:
+        model = Note
+        fields = ('title', 'text')
+
+class editNoteForm(forms.ModelForm):
+    class Meta:
+        model = Note
+        fields =('title', 'text')
+
+
+class deleteNoteForm(forms.ModelForm):
     class Meta:
         model = Note
         fields = ('title', 'text')
@@ -78,3 +90,4 @@ class UserRegistrationForm(UserCreationForm):
             user.save()
 
         return user
+

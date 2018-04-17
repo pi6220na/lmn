@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.views.generic import UpdateView
 import datetime
 from PIL import Image
 
@@ -69,3 +70,5 @@ class Note(models.Model):
 
     def __str__(self):
         return 'Note for user ID {} for show ID {} with title {} text {} posted on {}'.format(self.user, self.show, self.title, self.text, self.posted_date)
+
+

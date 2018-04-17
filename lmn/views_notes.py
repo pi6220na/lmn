@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Venue, Artist, Note, Show
-from .forms import VenueSearchForm, NewNoteForm, ArtistSearchForm, UserRegistrationForm
+from .forms import VenueSearchForm, NewNoteForm, ArtistSearchForm, UserRegistrationForm, editNoteForm, deleteNoteForm
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+
 
 from django.utils import timezone
 
@@ -32,6 +33,39 @@ def new_note(request, show_pk):
         form = NewNoteForm()
 
     return render(request, 'lmn/notes/new_note.html' , { 'form' : form , 'show':show })
+
+@login_required
+#editing note within the user profile
+def edit_note(request, note_pk):
+#the the Note model and the key for the note that will be edited
+    note = get_object_or_404(Note, pk=note_pk)
+
+    if request.method == "POST":
+        form = editNoteForm(request.POST, instance=note)
+        if form.is_valid():
+            note = form.save(commit=False)
+            note.save()
+           # return redirect('lmn/notes/note_detail.html', pk=note_pk)
+
+    else:
+        form = editNoteForm(instance=note)
+    return render(request, 'lmn/notes/edit_note.html', {'form': form, 'note': note})
+
+@login_required
+def delete_note(request, note_pk):
+
+    new_to_delete = get_object_or_404(Note, pk=note_pk)
+
+    if request.method == "POST":
+        form = deleteNoteForm(request.POST, instance=new_to_delete)
+
+        if form.is_valid(): #checks CSRF
+            new_to_delete.delete()
+
+    else:
+        form = deleteNoteForm(instance=new_to_delete)
+
+    return render(request, 'lmn/notes/edit_note.html', {'form': form})
 
 
 
