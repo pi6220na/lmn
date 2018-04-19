@@ -57,6 +57,9 @@ class Show(models.Model):
 
 ''' One user's opinion of one show. '''
 
+# https://stackoverflow.com/a/19288242
+class Photo(models.Model):
+    image = ...
 
 class Note(models.Model):
     show = models.ForeignKey(Show, blank=False, on_delete=models.CASCADE)

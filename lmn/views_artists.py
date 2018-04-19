@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-
+from django.conf.urls import url
 from .models import Venue, Artist, Note, Show
 from .forms import VenueSearchForm, NewNoteForm, ArtistSearchForm, UserRegistrationForm, ArtistDetailForm
 import webbrowser
@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from .photo_manager import delete_photo
 
 from django.utils import timezone
 
@@ -33,22 +34,21 @@ def artist_list(request):
 
 
 def artist_detail(request, artist_pk):
-    artist = get_object_or_404(Artist, pk=artist_pk);
-    # return render(request, 'lmn/artists/artist_detail.html' , {'artist' : artist})
-    # place = get_object_or_404(Artist, pk=artist_pk)
+    artist = get_object_or_404(Artist, pk=artist_pk)
+    # return render(request, 'artists/artist_detail.html', {'artist': artist})
 
     if request.method == 'POST':
 
         # get a copy of the object so have a reference to the old photo,
         # just in case it needs to be deleted; user saves new photo or clears old one.
-        old_place = get_object_or_404(Artist, pk=artist_pk)
+        old_artist = get_object_or_404(Artist, pk=artist_pk)
 
         form = ArtistDetailForm(request.POST, request.FILES, instance=place)  # instance = model object to update with the form data
         if form.is_valid():
 
             # If there was a photo added or removed, delete any old photo
             if 'photo' in form.changed_data:
-                photo_manager.delete_photo(old_place.photo)
+                delete_photo(old_artist.photo)
 
             form.save()
 
@@ -59,7 +59,7 @@ def artist_detail(request, artist_pk):
 
         return redirect('place_details', artist_pk=artist_pk)
 
-    else:    # GET place details
+    else:    # GET artist details  #from wishlist_with_uploads_for_app...
         review_form = ArtistDetailForm(instance=artist)  # Pre-populate with data from this Artist instance
-        return render(request, 'lmn/artists/artist_detail.html', {'artist':artist, 'review_form':review_form } )
+        return render(request, 'lmn/artists/artist_detail.html', {'artist' : artist})
 
