@@ -89,4 +89,4 @@ class UserEditForm(forms.Form):
     favorite_artist = forms.CharField(label='Favorite Artist', required=False)
     favorite_show = forms.CharField(label='Favorite Show', required=False)
     user_bio_info = forms.CharField(label='Bio Information', widget=forms.Textarea, help_text='What was your most memorable experience with music?', required=False)
-    user_photo = forms.ImageField(label='User Photo', required=False)
+    user_photo = forms.ImageField(widget=forms.FileInput(attrs={"id": "id_file"}), label='User Photo', required=False)

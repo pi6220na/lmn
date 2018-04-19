@@ -35,42 +35,31 @@ def user_profile_photo(request, user_pk):
 @login_required
 def edit_user_profile(request):
     user = request.user
-    userInfo = UserInfo.objects.get(user = user)
     usernotes = Note.objects.filter(user=user.pk).order_by('posted_date').reverse()
     if request.method == 'POST':
         form = UserEditForm(request.POST, request.FILES)
         if form.is_valid():
-            user.username = form.cleaned_data["user_name", False]
-            user.first_name = form.cleaned_data["user_first", False]
-            user.last_name = form.cleaned_data["user_last", False]
-            user.email = form.cleaned_data["user_email", False]
-            user_bio_info=form.cleaned_data["user_bio_info", False]
-            user_photo = request.FILES["user_photo", False]
-
-            user.userinfo.user_bio_info = user_bio_info
-            if hasattr(photo) and user_photo_file_name is not None:
-                user.userinfo.user_photo_name = photo.name
-                user.userinfo.user_photo = photo
-
+            user.username = form.cleaned_data["user_name"]
+            user.first_name = form.cleaned_data["user_first"]
+            user.last_name = form.cleaned_data["user_last"]
+            user.email = form.cleaned_data["user_email"]
+            user.favorite_venue = form.cleaned_data["favorite_venue"]
+            user.favorite_artist = form.cleaned_data["favorite_artist"]
+            user.favorite_show = form.cleaned_data["favorite_show"]
+            user.user_bio_info = form.cleaned_data["user_bio_info"]
+            #user.user_profile_photo = request.FILES.get["user_profile_photo"]
             user.save()
-            user.userinfo.save()
-
-        if hasattr(user, 'userinfo') and user.userinfo is not None:
-            user_bio_info = user.userinfo.user_bio_info
-            photo = user.userinfo.user_photo
-        else:
-            user.userinfo = UserInfo()
-            user_bio_info = "Dancing to the music in my head"
-            user.save()
-            user.userinfo.save()
+            user.user_profile.save()
 
     else:
         form = UserEditForm({"user_name": user.username,
                              "user_first": user.first_name,
                              "user_last": user.last_name,
-                             "user_email": user.email,
-                             "user_bio_info": user.user_bio_info,
-                             "user_photo": user.photo})
+                             "user_email": user.email,})
+                             #"favorite_venue": user.favorite_venue,
+                             #"favorite_artist": user.favorite_artist,
+                             #"favorite_show": user.favorite_show,
+                             #"user_bio_info": user.user_bio_info})
 
     return render(request, 'lmn/users/edit_user_profile.html', {'form': form, 'user' : user})
 
