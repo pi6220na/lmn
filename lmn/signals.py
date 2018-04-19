@@ -27,7 +27,7 @@ def place_pre_save_image_cleanup(sender, **kwargs):
     new_artist = kwargs['instance']
     # Can use this to get pk and query DB for previous values
     # Filter by pk and take first item
-    old_artist = artist.objects.filter(pk=new_artist.pk).first()
+    old_artist = Artist.objects.filter(pk=new_artist.pk).first()
     # If there's already a place with this pk - so this save is for an update - then
     # check to see if there is a photo, and if so, delete it
     if old_artist and old_artist.photo:
