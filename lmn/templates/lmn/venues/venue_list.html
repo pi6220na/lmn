@@ -34,8 +34,30 @@
 
 {% empty %}
   <P>No venues found</p>
+
 {% endfor %}
 
+{% if venues.has_other_pages %}
+  <ul class="pagination">
+    {% if venues.has_previous %}
+      <li><a href="?page={{ venues.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in venues.paginator.page_range %}
+      {% if venues.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if venues.has_next %}
+      <li><a href="?page={{ venues.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
 </div>
 
 {% endblock %}

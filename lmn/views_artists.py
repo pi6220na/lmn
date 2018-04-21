@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 from django.utils import timezone
 
 
@@ -26,11 +28,22 @@ def artist_list(request):
     if search_name:
         artists = Artist.objects.filter(name__icontains=search_name).order_by('name')
     else:
-        artists = Artist.objects.all().order_by('name')
+        artists_list = Artist.objects.all().order_by('name')
+        # pagination
+        page = request.GET.get('page', 1)
+
+        paginator = Paginator(artists_list, 7)
+        try:
+            artists = paginator.page(page)
+        except PageNotAnInteger:
+            artists = paginator.page(1)
+        except EmptyPage:
+            artists = paginator.page(paginator.num_pages)
+
 
     return render(request, 'lmn/artists/artist_list.html', {'artists':artists, 'form':form, 'search_term':search_name})
 
 
 def artist_detail(request, artist_pk):
-    artist = get_object_or_404(Artist, pk=artist_pk);
+    artist = get_object_or_404(Artist, pk=artist_pk)
     return render(request, 'lmn/artists/artist_detail.html' , {'artist' : artist})

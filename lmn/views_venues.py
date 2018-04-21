@@ -7,6 +7,14 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+
+# pagination : https://simpleisbetterthancomplex.com/tutorial/2016/08/03/how-to-paginate-with-django.html
+
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+
 from django.utils import timezone
 
 
@@ -19,7 +27,18 @@ def venue_list(request):
         #search for this venue, display results
         venues = Venue.objects.filter(name__icontains=search_name).order_by('name')
     else :
-        venues = Venue.objects.all().order_by('name')   # Todo paginate
+        venue_list = Venue.objects.all().order_by('name')   # Todo paginate
+        #user_list = Venue.objects.all().order_by('name')  # Todo paginate
+
+        page = request.GET.get('page', 1)
+
+        paginator = Paginator(venue_list, 7)
+        try:
+            venues = paginator.page(page)
+        except PageNotAnInteger:
+            venues = paginator.page(1)
+        except EmptyPage:
+            venues = paginator.page(paginator.num_pages)
 
     return render(request, 'lmn/venues/venue_list.html', { 'venues' : venues, 'form':form, 'search_term' : search_name })
 
@@ -36,5 +55,5 @@ def artists_at_venue(request, venue_pk):   # pk = venue_pk
 
 
 def venue_detail(request, venue_pk):
-    venue = get_object_or_404(Venue, pk=venue_pk);
+    venue = get_object_or_404(Venue, pk=venue_pk)
     return render(request, 'lmn/venues/venue_detail.html', {'venue' : venue})

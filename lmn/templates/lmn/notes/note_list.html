@@ -17,6 +17,7 @@
   <P class="note_info">Posted on {{ note.posted_date }} by <a class='user' href="{% url 'lmn:user_profile' user_pk=note.user.pk %}">{{ note.user.username }}</a></p>
   <p class='note_text'>{{ note.text|truncatechars:100 }}</p>
   <hr>
+</div>
 
 {% empty %}
 
@@ -33,6 +34,28 @@ display button to add new note for that show. -->
   <input id="add_note" type='submit' value='Add your own notes'>
 </form>
 
+{% endif %}
+
+{% if notes.has_other_pages %}
+  <ul class="pagination">
+    {% if notes.has_previous %}
+      <li><a href="?page={{ notes.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in notes.paginator.page_range %}
+      {% if notes.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if notes.has_next %}
+      <li><a href="?page={{ notes.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
 {% endif %}
 
 {% endblock %}
