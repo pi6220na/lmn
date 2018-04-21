@@ -32,5 +32,5 @@ def artist_list(request):
 
 
 def artist_detail(request, artist_pk):
-    artist = get_object_or_404(Artist, pk=artist_pk);
+    artist = get_object_or_404(Artist, pk=artist_pk)
     return render(request, 'lmn/artists/artist_detail.html' , {'artist' : artist})
