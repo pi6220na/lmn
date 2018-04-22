@@ -9,6 +9,7 @@ from django.contrib.auth import authenticate, login, logout
 
 from django.utils import timezone
 
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 @login_required
 def new_note(request, show_pk):
@@ -52,7 +53,18 @@ def edit_note(request, note_pk):
 
 
 def latest_notes(request):
-    notes = Note.objects.all().order_by('posted_date').reverse()
+    notes_list = Note.objects.all().order_by('posted_date').reverse()
+    #pagination
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(notes_list, 3)
+    try:
+        notes = paginator.page(page)
+    except PageNotAnInteger:
+        notes = paginator.page(1)
+    except EmptyPage:
+        notes = paginator.page(paginator.num_pages)
+
     return render(request, 'lmn/notes/note_list.html', {'notes':notes})
 
 

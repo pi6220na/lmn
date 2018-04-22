@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import django_heroku   # Clara's static css file fix
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -78,14 +79,15 @@ WSGI_APPLICATION = 'lmnop_project.wsgi.application'
 DATABASES = {
     'default': {
         #'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'ENGINE': 'django.db.backends.postgresql',
-        'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': 'lmnop',
-        'NAME': 'd1kjl8l2mh4mm6',
-        #'USER' : 'lmnop',
+        'ENGINE': 'django.db.backends.postgresql',
+        #'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': 'lmnop',
+        #'NAME': 'd1kjl8l2mh4mm6',
+        'USER' : 'lmnop',
         # 'USER' : 'rngcvcigyjjhqj',
-        # 'PASSWORD' : os.environ['LMNOP_DB_PW'],
-        # 'HOST' : 'localhost',
+        'PASSWORD' : os.environ['LMNOP_DB_PW'],
+        'HOST' : 'localhost',
+
         # 'HOST' : 'ec2-23-23-142-5.compute-1.amazonaws.com',
         # 'PORT' : '5432',
     }
@@ -137,7 +139,9 @@ LOGIN_REDIRECT_URL = 'lmn:my_user_profile'
 LOGOUT_REDIRECT_URL = 'lmn:homepage'
 
 # Media URL, for user-created media - becomes part of URL when images are displayed
-MEDIA_URL = '/lmn/media/'
-
+#MEDIA_URL = '/lmn/media/'
+MEDIA_URL = '/media/'
 # Where in the file system to save user-uploaded files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+django_heroku.settings(locals())
