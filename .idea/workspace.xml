@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d85b8767-ce12-4970-aa80-dbd8c1a6638c" name="Default" comment="Added auth">
+      <change beforePath="$PROJECT_DIR$/.idea/lmn.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lmn.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lmn/templates/lmn/artists/artist_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/lmn/templates/lmn/artists/artist_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lmn/templates/lmn/venues/venue_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/lmn/templates/lmn/venues/venue_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lmnop_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/lmnop_project/settings.py" afterDir="false" />
     </list>
     <ignored path="lmn.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -72,25 +72,31 @@
     </expand>
     <select />
   </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="lmn" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="artist_detail.html" pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="artist_detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/artists/artist_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="178">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="venue_detail.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/venues/venue_detail.html">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lmnop_project/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="280">
+              <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
+              <folding>
+                <element signature="e#310#319#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -129,13 +135,13 @@
         <option value="$PROJECT_DIR$/lmn/templates/lmn/notes/edit_note.html" />
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/lmn/templates/lmn/base.html" />
-        <option value="$PROJECT_DIR$/lmnop_project/settings.py" />
         <option value="$PROJECT_DIR$/lmn/views_artists.py" />
         <option value="$PROJECT_DIR$/lmn/views_venues.py" />
         <option value="$PROJECT_DIR$/lmn/urls.py" />
         <option value="$PROJECT_DIR$/lmn/signals.py" />
         <option value="$PROJECT_DIR$/lmn/templates/lmn/venues/venue_detail.html" />
         <option value="$PROJECT_DIR$/lmn/templates/lmn/artists/artist_detail.html" />
+        <option value="$PROJECT_DIR$/lmnop_project/settings.py" />
       </list>
     </option>
   </component>
@@ -146,15 +152,16 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="width" value="978" />
-    <option name="height" value="1039" />
+    <option name="x" value="-10" />
+    <option name="width" value="979" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -172,13 +179,6 @@
               <item name="lmn" type="462c0819:PsiDirectoryNode" />
               <item name="lmn" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lmn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lmn" type="462c0819:PsiDirectoryNode" />
-              <item name="lmn" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lmn" type="b2602c69:ProjectViewProjectNode" />
@@ -214,16 +214,10 @@
               <item name="lmn" type="462c0819:PsiDirectoryNode" />
               <item name="lmnop_project" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="lmn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lmn" type="462c0819:PsiDirectoryNode" />
-              <item name="media" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -233,7 +227,7 @@
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="PostgreSQL" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../wishlist_with_uploads_for_app_engine" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.django.DjangoModulesConfigurable" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -657,6 +651,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.30513176" side_tool="true" weight="0.37" />
@@ -665,7 +660,7 @@
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3277849" />
       <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.69486827" visible="true" weight="0.36581922" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20872483" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.4368932" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.28389263" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -684,22 +679,22 @@
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23384254" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.328125" />
+      <window_info anchor="bottom" id="Python Console" order="9" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.26951092" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Python Console" order="9" />
+      <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -750,6 +745,20 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/artists/artist_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/venues/venue_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/notes/new_note.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -960,9 +969,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -992,41 +998,29 @@
         <state relative-caret-position="-1918" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lmnop_project/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-857">
-          <caret line="90" column="9" selection-start-line="90" selection-start-column="9" selection-end-line="90" selection-end-column="9" />
-          <folding>
-            <element signature="e#310#319#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://d14a503c-b6cb-4a38-929b-792062368f3a/database/lmnop/schema/public/table/lmn_artist">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://d14a503c-b6cb-4a38-929b-792062368f3a/database/lmnop/schema/public/table/lmn_venue">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://d14a503c-b6cb-4a38-929b-792062368f3a/database/lmnop/schema/public/table/lmn_artist" />
+    <entry file="das://d14a503c-b6cb-4a38-929b-792062368f3a/database/lmnop/schema/public/table/lmn_venue" />
     <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/venues/venue_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="518">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/artists/artist_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="178">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lmnop_project/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
+          <folding>
+            <element signature="e#310#319#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
