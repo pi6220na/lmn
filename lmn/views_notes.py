@@ -20,7 +20,7 @@ def new_note(request, show_pk):
         form = NewNoteForm(request.POST)
         if form.is_valid():
 
-            note = form.save(commit=False);
+            note = form.save(commit=False)
             if note.title and note.text:  # If note has both title and text
                 note.user = request.user
                 note.show = show
