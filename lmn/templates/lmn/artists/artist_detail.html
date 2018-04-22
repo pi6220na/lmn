@@ -24,4 +24,12 @@
 </form>
 {% endif %}
 
+<form action="{% url 'lmn:delete_artist' %}" method="POST">
+  {% csrf_token %}
+  <input type="hidden" name="artist_pk" value="{{ artist.pk }}">
+  <button type=submit class="delete">Delete</button>
+</form>
+
+<script src="{% static 'js/confirm_delete.js' %}"></script>
+
 {% endblock %}
