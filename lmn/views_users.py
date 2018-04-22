@@ -54,11 +54,11 @@ def edit_user_profile(request):
         form = UserEditForm({"user_name": user.username,
                              "user_first": user.first_name,
                              "user_last": user.last_name,
-                             "user_email": user.email,})
-                             #"favorite_venue": user.favorite_venue,
-                             #"favorite_artist": user.favorite_artist,
-                             #"favorite_show": user.favorite_show,
-                             #"user_bio_info": user.user_bio_info})
+                             "user_email": user.email,
+                             "favorite_venue": user.favorite_venue,
+                             "favorite_artist": user.favorite_artist,
+                             "favorite_show": user.favorite_show,
+                             "user_bio_info": user.user_bio_info})
 
     return render(request, 'lmn/users/edit_user_profile.html', {'form': form, 'user' : user})
 
