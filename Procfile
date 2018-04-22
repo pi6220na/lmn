@@ -1,1 +1,1 @@
-web: gunicorn lmnop_project.wsgi
+web: gunicorn lmnop_project.wsgi --log-file -
