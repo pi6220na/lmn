@@ -10,8 +10,20 @@ class VenueSearchForm(forms.Form):
     search_name = forms.CharField(label='Venue Name', max_length=200)
 
 
+class VenueNewPhotoForm(forms.Form):
+    photo = forms.FileField(
+        label='Select a file',
+    )
+
+
 class ArtistSearchForm(forms.Form):
     search_name = forms.CharField(label='Artist Name', max_length=200)
+
+
+class ArtistNewPhotoForm(forms.Form):
+    photo = forms.FileField(
+        label='Select a file',
+    )
 
 
 class NewNoteForm(forms.ModelForm):

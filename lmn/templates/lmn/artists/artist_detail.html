@@ -1,5 +1,5 @@
 {% extends 'lmn/base.html' %}
-
+{% load staticfiles %}
 {% block content %}
 
 <h2 id='artist_detail_title'>Artist Detail</h2>
@@ -10,4 +10,17 @@
 {% else %}
   <P>No photo uploaded</p>
 {% endif %}
+<form action="{% url 'lmn:artist_detail' artist_pk=artist.pk %}" method="post" enctype="multipart/form-data">
+    <!--Much help and many thanks to Jeremy here-->
+        {% csrf_token %}
+    <p>{{ form.non_field_errors }}</p>
+    <p>{{ form.photo.label_tag }} </p>
+    <p>
+            {{ form.photo.errors }}
+            {{ form.photo }}
+    </p>
+<button type="submit">Save</button>
+</form>
+
+
 {% endblock %}

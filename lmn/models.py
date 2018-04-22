@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 import datetime
 from PIL import Image
@@ -22,11 +23,11 @@ class Artist(models.Model):
     name = models.CharField(max_length=200, blank=False)
     photo = models.ImageField(upload_to='images/', blank=True, null=True)
 
-    def __str__(self):
-        return "Artist: " + self.name
-
     # def __str__(self):
-    #     return 'Artist: %s\nPhoto %s' % (self.name, self.photo.url if self.photo else 'no photo')
+    #     return "Artist: " + self.name
+
+    def __str__(self):
+        return 'Artist: %s\nPhoto %s' % (self.name, self.photo.url if self.photo else 'no photo')
 
 
 
@@ -69,3 +70,4 @@ class Note(models.Model):
 
     def __str__(self):
         return 'Note for user ID {} for show ID {} with title {} text {} posted on {}'.format(self.user, self.show, self.title, self.text, self.posted_date)
+

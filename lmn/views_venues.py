@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Venue, Artist, Note, Show
-from .forms import VenueSearchForm, NewNoteForm, ArtistSearchForm, UserRegistrationForm
+from .forms import VenueSearchForm, NewNoteForm, ArtistSearchForm, UserRegistrationForm, VenueNewPhotoForm
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
 from django.utils import timezone
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 
 def venue_list(request):
@@ -36,5 +38,21 @@ def artists_at_venue(request, venue_pk):   # pk = venue_pk
 
 
 def venue_detail(request, venue_pk):
-    venue = get_object_or_404(Venue, pk=venue_pk);
-    return render(request, 'lmn/venues/venue_detail.html', {'venue' : venue})
+    # venue = get_object_or_404(Venue, pk=venue_pk);
+    # return render(request, 'lmn/venues/venue_detail.html', {'venue' : venue})
+
+    venue = get_object_or_404(Venue, pk=venue_pk)
+
+    if request.method == 'POST':
+
+        form = VenueNewPhotoForm(request.POST, request.FILES)
+        print('is form valid ' + str(form.is_valid()))
+        if form.is_valid():
+            venue.photo = request.FILES['photo']
+            venue.save()
+            return HttpResponseRedirect(reverse('lmn:venue_list'))
+
+    else:
+        form = VenueNewPhotoForm()
+
+    return render(request, 'lmn/venues/venue_detail.html', {'form': form, 'venue': venue})
