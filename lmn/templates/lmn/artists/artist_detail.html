@@ -10,6 +10,7 @@
 {% else %}
   <P>No photo uploaded</p>
 {% endif %}
+{% if user.is_authenticated %}
 <form action="{% url 'lmn:artist_detail' artist_pk=artist.pk %}" method="post" enctype="multipart/form-data">
     <!--Much help and many thanks to Jeremy here-->
         {% csrf_token %}
@@ -21,6 +22,6 @@
     </p>
 <button type="submit">Save</button>
 </form>
-
+{% endif %}
 
 {% endblock %}
