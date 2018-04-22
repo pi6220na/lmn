@@ -81,15 +81,14 @@ DATABASES = {
         #'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'ENGINE': 'django.db.backends.postgresql',
         #'ENGINE': 'django.db.backends.sqlite3',
-         'NAME': 'lmnop',
+        'NAME': 'lmnop',
         #'NAME': 'd1kjl8l2mh4mm6',
         'USER' : 'lmnop',
-        # 'USER' : 'rngcvcigyjjhqj',
+        #'USER' : 'rngcvcigyjjhqj',
         'PASSWORD' : os.environ['LMNOP_DB_PW'],
         'HOST' : 'localhost',
-
-        # 'HOST' : 'ec2-23-23-142-5.compute-1.amazonaws.com',
-        # 'PORT' : '5432',
+        #'HOST' : 'ec2-23-23-142-5.compute-1.amazonaws.com',
+        'PORT' : '5432',
     }
 }
 
@@ -145,3 +144,40 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 django_heroku.settings(locals())
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',
+            #'filters': ['require_debug_true'],
+            #'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+            #'formatter': 'simple'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            #'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'lmn': {                               # App name - important
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+}

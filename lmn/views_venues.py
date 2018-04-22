@@ -73,3 +73,11 @@ def venue_detail(request, venue_pk):
         form = VenueNewPhotoForm()
 
     return render(request, 'lmn/venues/venue_detail.html', {'form': form, 'venue': venue})
+
+
+def delete_venue(request):
+    pk = request.POST['venue_pk']
+    venue_record = get_object_or_404(Venue, pk=pk)
+    venue_record.photo.delete()
+    return redirect('lmn:venue_list')
+

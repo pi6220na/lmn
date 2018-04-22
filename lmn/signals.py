@@ -1,7 +1,11 @@
 from django.db.models.signals import pre_save, post_delete, post_save
 from django.dispatch import receiver
-from app.lmn.lmn.models import Artist, Venue, User
+from lmn.models import Artist, Venue, User
+
 import logging
+logging = logging.getLogger(__name__)
+
+
 from django.core.files.storage import default_storage
 
 
@@ -20,7 +24,7 @@ def place_post_delete_image_cleanup(sender, **kwargs):
             default_storage.delete(artist.photo.name)
 
 
-@receiver(post_save, sender=Artist)
+@receiver(pre_save, sender=Artist)
 def place_pre_save_image_cleanup(sender, **kwargs):
 
     # kwargs['instance'] is the Place object, about to be updated

@@ -1,6 +1,7 @@
 <!-- basic info about a venue -->
 
 {% extends 'lmn/base.html' %}
+{% load staticfiles %}
 
 {% block content %}
 
@@ -29,5 +30,17 @@
     </p>
     <p><input type="submit" value="Upload" /></p>
 </form>
+
+
+
+<form action="{% url 'lmn:delete_venue' %}" method="POST">
+  {% csrf_token %}
+  <input type="hidden" name="venue_pk" value="{{ venue.pk }}">
+  <button type=submit class="delete">Delete</button>
+</form>
+
+<script src="{% static 'js/confirm_delete.js' %}"></script>
 {% endif %}
+
+
 {% endblock %}

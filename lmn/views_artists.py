@@ -64,3 +64,10 @@ def artist_detail(request, artist_pk):
         form = ArtistNewPhotoForm()
 
     return render(request, 'lmn/artists/artist_detail.html', {'form': form, 'artist': artist})
+
+
+def delete_artist(request):
+    pk = request.POST['artist_pk']
+    artist_record = get_object_or_404(Artist, pk=pk)
+    artist_record.photo.delete()
+    return redirect('lmn:artist_list')
