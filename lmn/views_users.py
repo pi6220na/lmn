@@ -35,18 +35,17 @@ def user_profile_photo(request, user_pk):
 @login_required
 def edit_user_profile(request):
     user = request.user
-    usernotes = Note.objects.filter(user=user.pk).order_by('posted_date').reverse()
     if request.method == 'POST':
         form = UserEditForm(request.POST, request.FILES)
         if form.is_valid():
-            user.username = form.cleaned_data["user_name"]
-            user.first_name = form.cleaned_data["user_first"]
-            user.last_name = form.cleaned_data["user_last"]
-            user.email = form.cleaned_data["user_email"]
-            user.favorite_venue = form.cleaned_data["favorite_venue"]
-            user.favorite_artist = form.cleaned_data["favorite_artist"]
-            user.favorite_show = form.cleaned_data["favorite_show"]
-            user.user_bio_info = form.cleaned_data["user_bio_info"]
+            user.username = form.cleaned_data.get("user_name", False)
+            user.first_name = form.cleaned_data.get("first_name", False)
+            user.last_name = form.cleaned_data.get("last_name", False)
+            user.email = form.cleaned_data.get("email", False)
+            user.favorite_venue = form.cleaned_data.get("favorite_venue", False)
+            user.favorite_artist = form.cleaned_data.get("favorite_artist", False)
+            user.favorite_show = form.cleaned_data.get("favorite_show", False)
+            user.user_bio_info = form.cleaned_data.get("user_bio_info", False)
             #user.user_profile_photo = request.FILES.get["user_profile_photo"]
             user.save()
             user.user_profile.save()

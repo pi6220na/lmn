@@ -19,9 +19,6 @@ User._meta.get_field('first_name')._blank = False
 
 class UserInfo(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,)
-    first_name = models.CharField(max_length=200, blank=False)
-    last_name = models.CharField(max_length=200, blank=False)
-    email = models.CharField(max_length=200, blank=False, unique=True)
     user_bio_info = models.TextField(blank=True, max_length=1000)
     user_photo_file_name = models.CharField(null=True, max_length=255)
     user_photo = models.BinaryField(null=True, blank=True)
