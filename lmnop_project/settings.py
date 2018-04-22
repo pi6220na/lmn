@@ -87,6 +87,7 @@ DATABASES = {
         # 'USER' : 'rngcvcigyjjhqj',
         'PASSWORD' : os.environ['LMNOP_DB_PW'],
         'HOST' : 'localhost',
+
         # 'HOST' : 'ec2-23-23-142-5.compute-1.amazonaws.com',
         # 'PORT' : '5432',
     }
