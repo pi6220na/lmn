@@ -30,7 +30,8 @@
     </p>
     <p><input type="submit" value="Upload" /></p>
 </form>
-{% endif %}
+
+
 
 <form action="{% url 'lmn:delete_venue' %}" method="POST">
   {% csrf_token %}
@@ -39,6 +40,7 @@
 </form>
 
 <script src="{% static 'js/confirm_delete.js' %}"></script>
+{% endif %}
 
 
 {% endblock %}
