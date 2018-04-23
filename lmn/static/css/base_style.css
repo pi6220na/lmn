@@ -1,5 +1,7 @@
 body {
   font-family: monospace;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 #welcome_user_msg, #login_or_sign_up {
