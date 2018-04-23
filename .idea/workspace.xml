@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d85b8767-ce12-4970-aa80-dbd8c1a6638c" name="Default" comment="Added auth">
-      <change beforePath="$PROJECT_DIR$/.idea/lmn.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lmn.iml" afterDir="false" />
+    <list default="true" id="d85b8767-ce12-4970-aa80-dbd8c1a6638c" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lmnop_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/lmnop_project/settings.py" afterDir="false" />
     </list>
     <ignored path="lmn.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -83,7 +81,7 @@
       <file leaf-file-name="artist_detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/artists/artist_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
+            <state relative-caret-position="640">
               <caret line="32" selection-start-line="32" selection-end-line="32" />
             </state>
           </provider>
@@ -93,7 +91,7 @@
         <entry file="file://$PROJECT_DIR$/lmnop_project/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="280">
-              <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
+              <caret line="93" selection-start-line="93" selection-end-line="93" />
               <folding>
                 <element signature="e#310#319#0" expanded="true" />
               </folding>
@@ -119,7 +117,6 @@
         <option value="$PROJECT_DIR$/lmn/templates/lmn/venues/venue_list.html" />
         <option value="$PROJECT_DIR$/lmn/templates/registration/login.html" />
         <option value="$PROJECT_DIR$/lmn/templates/registration/register.html" />
-        <option value="$PROJECT_DIR$/lmn/static/css/base_style.css" />
         <option value="$PROJECT_DIR$/lmn/templates/lmn/notes/new_note.html" />
         <option value="$PROJECT_DIR$/lmn/templates/lmn/artists/artist_list.html" />
         <option value="$PROJECT_DIR$/lmn/templates/lmn/artists/artist_list_for_venue.html" />
@@ -142,6 +139,8 @@
         <option value="$PROJECT_DIR$/lmn/templates/lmn/venues/venue_detail.html" />
         <option value="$PROJECT_DIR$/lmn/templates/lmn/artists/artist_detail.html" />
         <option value="$PROJECT_DIR$/lmnop_project/settings.py" />
+        <option value="$PROJECT_DIR$/lmn/static/css/base_style.css" />
+        <option value="$PROJECT_DIR$/lmn/static/js/confirm_delete.js" />
       </list>
     </option>
   </component>
@@ -153,7 +152,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
-    <option name="width" value="979" />
+    <option name="width" value="980" />
     <option name="height" value="1040" />
   </component>
   <component name="ProjectView">
@@ -179,6 +178,20 @@
               <item name="lmn" type="462c0819:PsiDirectoryNode" />
               <item name="lmn" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lmn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lmn" type="462c0819:PsiDirectoryNode" />
+              <item name="lmn" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lmn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lmn" type="462c0819:PsiDirectoryNode" />
+              <item name="lmn" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lmn" type="b2602c69:ProjectViewProjectNode" />
@@ -646,7 +659,14 @@
       <option name="project" value="LOCAL" />
       <updated>1524425275700</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="change css and javascript delete photo message">
+      <created>1524444965707</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1524444965707</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -659,8 +679,8 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32768363" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3277849" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.69486827" visible="true" weight="0.36581922" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.4368932" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.69486827" visible="true" weight="0.36581922" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2657718" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.28389263" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -679,22 +699,22 @@
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23384254" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.328125" />
-      <window_info anchor="bottom" id="Python Console" order="9" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.26951092" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="9" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -732,7 +752,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add Clara's fix for Heroku Static CSS files." />
     <MESSAGE value="Add delete button for Artist and Venue detail pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add delete button for Artist and Venue detail pages" />
+    <MESSAGE value="change css and javascript delete photo message" />
+    <option name="LAST_COMMIT_MESSAGE" value="change css and javascript delete photo message" />
   </component>
   <component name="WindowStateProjectService">
     <state width="405" height="230" key="Git.Branch.Popup" />
@@ -745,6 +766,16 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/lmnop_project/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1840">
+          <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
+          <folding>
+            <element signature="e#310#319#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/artists/artist_detail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -885,13 +916,6 @@
     <entry file="das://164b60dc-a525-4137-ad08-c01a919e82a6/schema/main/table/lmn_artist" />
     <entry file="das://164b60dc-a525-4137-ad08-c01a919e82a6/schema/main/table/lmn_venue" />
     <entry file="das://164b60dc-a525-4137-ad08-c01a919e82a6/schema/main/table/lmn_note" />
-    <entry file="file://$PROJECT_DIR$/lmn/static/css/base_style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -959,9 +983,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="93">
           <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="e#642#683#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -993,11 +1014,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/debug.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1918" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/debug.log" />
     <entry file="das://d14a503c-b6cb-4a38-929b-792062368f3a/database/lmnop/schema/public/table/lmn_artist" />
     <entry file="das://d14a503c-b6cb-4a38-929b-792062368f3a/database/lmnop/schema/public/table/lmn_venue" />
     <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/venues/venue_detail.html">
@@ -1009,15 +1026,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/artists/artist_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
+        <state relative-caret-position="640">
           <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lmn/static/css/base_style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="21" lean-forward="true" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lmn/static/js/confirm_delete.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="19" column="66" lean-forward="true" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="66" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lmnop_project/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
-          <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
+          <caret line="93" selection-start-line="93" selection-end-line="93" />
           <folding>
             <element signature="e#310#319#0" expanded="true" />
           </folding>
