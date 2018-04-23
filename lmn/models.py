@@ -18,12 +18,18 @@ User._meta.get_field('first_name')._blank = False
 '''A User Profile'''
 
 class UserInfo(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE,)
+    user_name = models.OneToOneField(User, on_delete=models.CASCADE,)
+    user_first = models.CharField(max_length=200, blank=True)
+    user_last = models.CharField(max_length=200, blank=True)
+    user_email = models.EmailField(max_length=200, blank=True)
+    user_favorite_venue = models.CharField(max_length=200, blank=True)
+    user_favorite_artist = models.CharField(max_length=200, blank=True)
+    user_favorite_show = models.CharField(max_length=200, blank=True)
     user_bio_info = models.TextField(blank=True, max_length=1000)
     user_photo_file_name = models.CharField(null=True, max_length=255)
-    user_photo = models.BinaryField(null=True, blank=True)
-    user_favorite_artist = models.CharField(max_length=200, blank=True)
-    user_favorite_venue = models.CharField(max_length=200, blank=True)
+    user_photo = models.ImageField(upload_to='images/', blank=True, null=True)
+
+
 
     def __str__(self):
         return "Bio Information: My name is {} and {}.".format(self.user.first_name, self.user_bio_info)

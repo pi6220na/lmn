@@ -33,12 +33,23 @@ def user_profile_photo(request, user_pk):
     return HttpResponse(user_photo)
 
 @login_required
-def edit_user_profile(request):
-    user = request.user
+def edit_user_profile(request, user_pk):
+
+    #user = request.user
+
+    user = UserInfo.objects.get(user_name_id=user_pk)
+
     if request.method == 'POST':
+
+        #print(user)
+
+        if user is None:
+            return Http404("no user found.")
+
+
         form = UserEditForm(request.POST, request.FILES)
         if form.is_valid():
-            user.username = form.cleaned_data.get("user_name", False)
+            #user.username = form.cleaned_data.get("user_name", False)
             user.first_name = form.cleaned_data.get("first_name", False)
             user.last_name = form.cleaned_data.get("last_name", False)
             user.email = form.cleaned_data.get("email", False)
@@ -47,18 +58,20 @@ def edit_user_profile(request):
             user.favorite_show = form.cleaned_data.get("favorite_show", False)
             user.user_bio_info = form.cleaned_data.get("user_bio_info", False)
             #user.user_profile_photo = request.FILES.get["user_profile_photo"]
-            user.save()
-            user.user_profile.save()
+            print("saving user profile info")
+            form.save()
+            #user.user_profile.save()
 
     else:
-        form = UserEditForm({"user_name": user.username,
-                             "user_first": user.first_name,
-                             "user_last": user.last_name,
-                             "user_email": user.email,
-                             "favorite_venue": user.favorite_venue,
-                             "favorite_artist": user.favorite_artist,
-                             "favorite_show": user.favorite_show,
+        form = UserEditForm({"user_name_id": user.user_name_id,
+                             "user_first": user.user_first,
+                             "user_last": user.user_last,
+                             "user_email": user.user_email,
+                             "favorite_venue": user.user_favorite_venue,
+                             "favorite_artist": user.user_favorite_artist,
+                             "favorite_show": user.user_favorite_show,
                              "user_bio_info": user.user_bio_info})
+        #form = UserEditForm(empty_permitted=True)
 
     return render(request, 'lmn/users/edit_user_profile.html', {'form': form, 'user' : user})
 

@@ -79,14 +79,19 @@ class UserRegistrationForm(UserCreationForm):
 
         return user
 
-class UserEditForm(forms.Form):
+class UserEditForm(forms.ModelForm):
 
-    user_name = forms.CharField(label='User Name')
-    user_first = forms.CharField(label='User First Name')
-    user_last = forms.CharField(label='User Last Name')
-    user_email = forms.EmailField(label='User Email')
-    favorite_venue = forms.CharField(label='Favorite Venue')
-    favorite_artist = forms.CharField(label='Favorite Artist')
-    favorite_show = forms.CharField(label='Favorite Show')
-    user_bio_info = forms.CharField(label='Bio Information', widget=forms.Textarea, help_text='What was your most memorable experience with music?')
+    user_name_id = forms.CharField(label='User Name',required=False)
+    user_first = forms.CharField(label='User First Name',required=False)
+    user_last = forms.CharField(label='User Last Name',required=False)
+    user_email = forms.EmailField(label='User Email',required=False)
+    user_favorite_venue = forms.CharField(label='Favorite Venue',required=False)
+    user_favorite_artist = forms.CharField(label='Favorite Artist',required=False)
+    user_favorite_show = forms.CharField(label='Favorite Show',required=False)
+    user_bio_info = forms.CharField(label='Bio Information', widget=forms.Textarea, help_text='What was your most memorable experience with music?',required=False)
     user_photo = forms.ImageField(widget=forms.FileInput(attrs={"id": "id_file"}), label='User Photo', required=False)
+
+    class Meta:
+        model = UserInfo
+        fields = ('user_first', 'user_last', 'user_email', 'user_favorite_venue', 'user_favorite_artist', 'user_favorite_show', 'user_bio_info', 'user_photo')
+
