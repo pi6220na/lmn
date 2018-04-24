@@ -25,7 +25,7 @@ User._meta.get_field('first_name')._blank = False
 
 class UserInfo(models.Model):
     #user_name = models.OneToOneField(User, on_delete=models.CASCADE)
-    user_name = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    user_name = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     user_favorite_venue = models.CharField(max_length=200, blank=True)
     user_favorite_artist = models.CharField(max_length=200, blank=True)
     user_favorite_show = models.CharField(max_length=200, blank=True)
