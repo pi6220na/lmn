@@ -10,15 +10,18 @@
     <img src="{% url 'lmn:user_profile_photo' user_pk=user.pk %}" />
 {% endif %}
 
-{% if message %}
-  <P>{{ message }}</p>
-{% endif %}
-
-<form method='post' enctype="multipart/form-data" action="">{% csrf_token %}
-  <table id="edit_profile_form">
-    {{ form.as_table}}
-  </table>
-  <button type='submit'>Apply Changes</button>
+<form method="post" enctype="multipart/form-data" action="">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Save changes</button>
 </form>
+
+{% if message %}
+<ul class="messages">
+  {% for message in messages %}
+  <li class="{{ message.tags }}">{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
 
 {% endblock %}

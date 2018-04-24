@@ -9,19 +9,20 @@ from django.contrib.auth import authenticate, login, logout
 
 from django.core.exceptions import PermissionDenied
 from django.utils import timezone
+from django.db import transaction
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.http import HttpResponse, Http404
 from PIL import Image
 
+from django.db.models.signals import post_save
+from django.forms import ValidationError
+from django.contrib import messages
+from django.db import transaction
 
 def user_profile(request, user_pk):
-    user = User.objects.get(pk=user_pk)
-    if hasattr(user, 'userinfo') and hasattr(user.userinfo, 'user_bio_info'):
-        user_bio_info = user.userinfo.user_bio_info
-    else:
-        user_bio_info = 'Still a work in progress.'
-    usernotes = Note.objects.filter(user=user.pk).order_by('posted_date').reverse()
-    return render(request, 'lmn/users/user_profile.html', {'user' : user , 'bio_info' : user_bio_info, 'notes' : usernotes })
+        user = User.objects.get(pk=user_pk)
+        usernotes = Note.objects.filter(user=user.pk).order_by('posted_date').reverse()
+        return render(request, 'lmn/users/user_profile.html', {'user' : user , 'notes' : usernotes })
 
 def user_profile_photo(request, user_pk):
     user = User.objects.get(pk=user_pk)
@@ -32,37 +33,26 @@ def user_profile_photo(request, user_pk):
     user_photo= userinfo.user_photo
     return HttpResponse(user_photo)
 
-@login_required
+#@login_required
+#@transaction.atomic
 def edit_user_profile(request):
-    user = request.user
     if request.method == 'POST':
-        form = UserEditForm(request.POST, request.FILES)
-        if form.is_valid():
-            user.username = form.cleaned_data.get("user_name", False)
-            user.first_name = form.cleaned_data.get("first_name", False)
-            user.last_name = form.cleaned_data.get("last_name", False)
-            user.email = form.cleaned_data.get("email", False)
-            user.favorite_venue = form.cleaned_data.get("favorite_venue", False)
-            user.favorite_artist = form.cleaned_data.get("favorite_artist", False)
-            user.favorite_show = form.cleaned_data.get("favorite_show", False)
-            user.user_bio_info = form.cleaned_data.get("user_bio_info", False)
-            #user.user_profile_photo = request.FILES.get["user_profile_photo"]
-            user.save()
-            user.user_profile.save()
-
+        user_form = UserRegistrationForm(request.POST, instance=request.user)
+        edit_user_form = UserEditForm(request.POST, instance=request.user.userinfo)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, _('Your profile was successfully updated!'))
+            return redirect('lmn/users/edit_user_profile.html', user_pk=request.user.pk)
+        else:
+            messages.error(request, _('Please correct the error below.'))
     else:
-        form = UserEditForm({"user_name": user.username,
-                             "user_first": user.first_name,
-                             "user_last": user.last_name,
-                             "user_email": user.email,
-                             "favorite_venue": user.favorite_venue,
-                             "favorite_artist": user.favorite_artist,
-                             "favorite_show": user.favorite_show,
-                             "user_bio_info": user.user_bio_info})
-
-    return render(request, 'lmn/users/edit_user_profile.html', {'form': form, 'user' : user})
-
-
+        user_form = UserRegistrationForm(instance=request.user)
+        edit_user_form = UserEditForm(instance=request.user.userinfo)
+    return render(request, 'lmn/users/edit_user_profile.html', {
+        'user_form': user_form,
+        'profile_form': edit_user_form
+    })
 
 def register(request):
 

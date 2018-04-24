@@ -1,7 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 import datetime
 
+# code from tutorial: https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#onetoone
 # Every model gets a primary key field by default.
 
 # Users, venues, shows, artists, notes
@@ -18,15 +21,28 @@ User._meta.get_field('first_name')._blank = False
 '''A User Profile'''
 
 class UserInfo(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE,)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     user_bio_info = models.TextField(blank=True, max_length=1000)
-    user_photo_file_name = models.CharField(null=True, max_length=255)
     user_photo = models.BinaryField(null=True, blank=True)
     user_favorite_artist = models.CharField(max_length=200, blank=True)
     user_favorite_venue = models.CharField(max_length=200, blank=True)
+    user_favorite_show = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
-        return "Bio Information: My name is {} and {}.".format(self.user.first_name, self.user_bio_info)
+        #return "Bio Information: My name is {} and {}.".format(self.user.first_name, self.user_bio_info)
+        return "{} {} {} {} {} ".format(self.user_name, self.user_favorite_venue,
+            self.user_favorite_artist, self.user_favorite_show, self.user_bio_info)
+
+
+@receiver(post_save, sender=User)
+def create_user_info(sender, instance, created, **kwargs):
+    if created:
+        UserInfo.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_info(sender, instance, **kwargs):
+    instance.userinfo.save()
+
 
 
 ''' A music artist '''
