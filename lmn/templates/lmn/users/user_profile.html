@@ -9,6 +9,19 @@ Text truncated to 200 characters. -->
 
 <h2 id='username_notes'>{{ user.username }}'s notes</h2>
 
+{% if user.userinfo.user_photo %}
+    <img src="{% url 'lmn:user_profile_photo' user_pk=user.pk %}" />
+{% endif %}
+
+{% if user.userinfo.favorite_show or user.userinfo.favorite_venue or user.userinfo.favorite_artist or user.user_bio_info %}
+<h3> Favorites and Bio Info </h3>
+  <p class="favorite_venue">{{user.favorite_venue}}</p>
+  <p class="favorite_artist">{{user.favorite_artist}}</p>
+  <p class="favorite_show">{{user.favorite_show}}</p>
+  <p class="bio_info">{{user.bio_info}}</p>
+
+{% endif %}
+
 {% for note in notes %}
 
 <div class='note' id="note_{{ note.pk }}">
@@ -16,6 +29,7 @@ Text truncated to 200 characters. -->
   <P class="note_info">{{ note.show.artist.name }} at {{ note.show.venue.name }} on {{ note.show.show_date }}</P>
   <p class="note_text">{{ note.text|truncatechars:300}}</p>
   <p class="note_posted_at">{{ note.posted_date}}</p>
+
 </div>
 
 {% empty %}
@@ -24,5 +38,6 @@ Text truncated to 200 characters. -->
 
 {% endfor %}
 
+<P><a href="{% url 'lmn:edit_user_profile' user_pk=user.pk %}">Edit Account</a></p>
 
 {% endblock %}

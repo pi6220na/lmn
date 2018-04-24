@@ -1,0 +1,7 @@
+{% extends 'lmn/base.html' %}
+{% block content %}
+
+<h1>You have successfully logged out. Goodbye! </h>
+
+<span id='login_or_sign_up'><a href="{% url 'login' %}?next={{ request.path }}">Login or sign up</a></span>
+{% endblock %}

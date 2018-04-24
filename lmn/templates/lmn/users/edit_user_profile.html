@@ -1,0 +1,31 @@
+{% extends 'lmn/base.html' %}
+
+{% block content %}
+
+<H2>Account Information</H2>
+
+<!-- Display user profile photo -->
+
+{% if user.userinfo.user_photo %}
+    <img src="{% url 'lmn:user_profile_photo' user_pk=user.pk %}" />
+{% endif %}
+
+
+<form method="post" enctype="multipart/form-data" action="">
+  {% csrf_token %}
+  {{ form.as_p }}
+
+  <button type="submit">Save changes</button>
+</form>
+
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li class="{{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+  </ul>
+
+{% endif %}
+
+
+{% endblock %}
