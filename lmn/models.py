@@ -43,8 +43,6 @@ def create_user_info(sender, instance, created, **kwargs):
 def save_user_info(sender, instance, **kwargs):
     instance.userinfo.save()
 
-
-
 ''' A music artist '''
 class Artist(models.Model):
     name = models.CharField(max_length=200, blank=False);
