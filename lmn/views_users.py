@@ -117,9 +117,9 @@ def register(request):
             authenticate(username=request.POST['username'], password=request.POST['password1'])
             user = form.save()
             login(request, user)
-            user_info = UserInfo()
-            user_info.user = user
-            user_info.save()
+            # user_info = UserInfo()
+            # user_info.user = user
+            # user_info.save()
 
             return redirect('lmn:homepage')
 
